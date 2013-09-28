@@ -20,6 +20,7 @@ package tk.makigas.chase.screen;
 import tk.makigas.chase.AlienChase;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.Texture;
 
 /**
@@ -32,11 +33,11 @@ import com.badlogic.gdx.graphics.Texture;
  */
 public class LoadingScreen extends AbstractScreen {
 
-	/**
-	 * Guardan el ancho y el alto de la pantalla para que la imagen que se
-	 * renderiza en este estado sepa cómo de ancha y alta debe mostrarse.
-	 */
-	private int width, height;
+	/** Splash image scale. */
+	private int scale;
+	
+	/** Splash image position. */
+	private float x, y, size;
 
 	public LoadingScreen(AlienChase game) {
 		super(game);
@@ -44,6 +45,9 @@ public class LoadingScreen extends AbstractScreen {
 	
 	@Override
 	public void render(float delta) {
+		Gdx.gl.glClearColor(0.0f, (51.0f / 256.0f), (153.0f / 256.0f), 1.0f);
+		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		
 		// Para asegurarnos de que el SpriteBatch y la cámara están
 		// siempre sincronizados, los ajustamos en cada fotograma.
 		game.getCamera().update();			// recalcula las matrices de la cámara
@@ -62,19 +66,24 @@ public class LoadingScreen extends AbstractScreen {
 		// Sólo se puede mostrar esta imagen si ya ha sido cargada por el
 		// AssetManager (de ahí que sea necesario cargar este recurso
 		// el primero de todos).
-		if(AlienChase.MANAGER.isLoaded("cargando.png", Texture.class)) {
+		if(AlienChase.MANAGER.isLoaded("splash.png", Texture.class)) {
 			// Está cargado.
 			game.getSpriteBatch().begin();
-			game.getSpriteBatch().draw(AlienChase.MANAGER.get("cargando.png", Texture.class),
-					0, 0, width, height);
+			game.getSpriteBatch().draw(AlienChase.MANAGER.get("splash.png", Texture.class),
+					x, y, size, size);
 			game.getSpriteBatch().end();
 		}
 	}
 
 	@Override
 	public void show() {
-		this.width = Gdx.graphics.getWidth();
-		this.height = Gdx.graphics.getHeight();
+		int width, height;
+		width = Gdx.graphics.getWidth();
+		height = Gdx.graphics.getHeight();
+		scale = Math.max(1, (width < height ? width : height) / 256);
+		size = 256 * scale;
+		x = (width - size) / 2;
+		y = (height - size) / 2;
 	}
 
 	@Override
@@ -88,8 +97,10 @@ public class LoadingScreen extends AbstractScreen {
 	
 	@Override
 	public void resize(int width, int height) {
-		this.width = width;
-		this.height = height;
+		scale = Math.max(1, (width < height ? width : height) / 256);
+		size = 256 * scale;
+		x = (width - size) / 2;
+		y = (height - size) / 2;
 	}
 
 }

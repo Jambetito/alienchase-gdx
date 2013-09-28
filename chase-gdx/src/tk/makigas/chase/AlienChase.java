@@ -70,7 +70,7 @@ public class AlienChase extends Game {
 		camera = new OrthographicCamera(width, height);
 		
 		// Cargamos todos los elementos externos que usará el juego.
-		MANAGER.load("cargando.png", Texture.class);
+		MANAGER.load("splash.png", Texture.class);
 		MANAGER.load("alien.gif", Texture.class);
 		MANAGER.load("bala.png", Texture.class);
 		MANAGER.load("cohete.png", Texture.class);
