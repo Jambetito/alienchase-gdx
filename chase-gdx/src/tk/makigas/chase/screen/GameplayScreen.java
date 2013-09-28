@@ -30,11 +30,9 @@ import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL11;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
  * Pantalla de juego principal. Aquí es donde se desarrolla la trama.
@@ -45,6 +43,9 @@ public class GameplayScreen extends AbstractScreen {
 
 	/** Escenario usado por el juego. */
 	private Stage stage;
+	
+	/** Background star field. */
+	private BackgroundActor background;
 	
 	/** Nave usada por el jugador. */
 	private NaveActor nave;
@@ -91,7 +92,7 @@ public class GameplayScreen extends AbstractScreen {
 		
 		initActors(); // inicializamos todos los actores en el escenario
 		initInput(); // inicializamos el sistema de entrada
-
+		
 		// Finalmente inicializamos el contador de tiempo. Esto sólo
 		// ajusta el tiempo que queda para que el primer alien haga spawn.
 		timer = 2 + (float) Math.random();
@@ -103,13 +104,9 @@ public class GameplayScreen extends AbstractScreen {
 	 * importante para que se muestren correctamente unos delante de otros.
 	 */
 	private void initActors() {
-		// Crear fondo. Para crear el fondo se usa una imagen, que es un
-		// elemento de scene2d-ui que permite crear imágenes simples.
-		// Para lo que lo queremos, nos vale y nos sobra. Hay que añadirlo
-		// en primer lugar para que quede en el fondo en todo momento.
-		Image imgFondo = new Image(AlienChase.MANAGER.get("fondo.png", Texture.class));
-		imgFondo.setFillParent(true);
-		stage.addActor(imgFondo);
+		background = new BackgroundActor(100);
+		background.setBounds(0, 0, stage.getWidth(), stage.getHeight());
+		stage.addActor(background);
 		
 		// Creamos una nave.
 		nave = new NaveActor();
@@ -192,6 +189,7 @@ public class GameplayScreen extends AbstractScreen {
 
 	@Override
 	public void render(float delta) {
+		
 		// Limpieza de la pantalla.
 		Gdx.gl.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		
@@ -336,6 +334,7 @@ public class GameplayScreen extends AbstractScreen {
 		stage.setViewport(640, 360, true);
 		
 		// Reposicionamos los actores cuya posición dependa del stage.
+		background.setBounds(0, 0, stage.getWidth(), stage.getHeight());
 		vidaNave.setPosition(stage.getWidth() - 150, stage.getHeight() - 20);
 		vidaEscudo.setPosition(stage.getWidth() - 150, stage.getHeight() - 28);
 		puntuacion.setPosition(10, stage.getHeight() - 10);

@@ -75,7 +75,6 @@ public class AlienChase extends Game {
 		MANAGER.load("bala.png", Texture.class);
 		MANAGER.load("cohete.png", Texture.class);
 		MANAGER.load("defensa.png", Texture.class);
-		MANAGER.load("fondo.png", Texture.class);
 		MANAGER.load("pad.png", Texture.class);
 		MANAGER.load("vida.png", Texture.class);
 		MANAGER.load("hit.ogg", Sound.class);
@@ -85,6 +84,7 @@ public class AlienChase extends Game {
 		MANAGER.load("title.png", Texture.class);
 		MANAGER.load("jugar.png", Texture.class);
 		MANAGER.load("salir.png", Texture.class);
+		MANAGER.load("star.png", Texture.class);
 		
 		setScreen(LOADING);
 	}
