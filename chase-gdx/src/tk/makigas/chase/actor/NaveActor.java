@@ -48,7 +48,7 @@ public class NaveActor extends Actor implements HealthActor {
 	public Vector2 velocidad = new Vector2(0, 0);	
 
 	public NaveActor() {
-		nave = new TextureRegion(AlienChase.MANAGER.get("cohete.png",
+		nave = new TextureRegion(AlienChase.MANAGER.get("entities/cohete.png",
 				Texture.class), 100, 79);
 		setSize(nave.getRegionWidth(), nave.getRegionHeight());
 		health = 1;

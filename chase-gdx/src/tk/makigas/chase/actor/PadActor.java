@@ -44,7 +44,7 @@ public class PadActor extends Actor {
 	 * @param y fila de la textura.
 	 */
 	public PadActor(int x, int y) {
-		button = new TextureRegion(AlienChase.MANAGER.get("pad.png", Texture.class), 32 * x, 32 * y, 32, 32);
+		button = new TextureRegion(AlienChase.MANAGER.get("ui/pad.png", Texture.class), 32 * x, 32 * y, 32, 32);
 		setSize(32, 32);
 	}
 

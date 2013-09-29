@@ -97,7 +97,7 @@ public class BackgroundActor extends Actor {
 	public BackgroundActor(int amount)
 	{
 		dataGenerator = new Random();
-		starTexture = AlienChase.MANAGER.get("star.png", Texture.class);
+		starTexture = AlienChase.MANAGER.get("entities/star.png", Texture.class);
 		stars = new ArrayList<StarData>();
 		
 		StarData star;

@@ -45,7 +45,7 @@ public class AlienActor extends Actor {
 	private static final Vector2 VELOCIDAD = new Vector2(-300, 0);
 	
 	public AlienActor() {
-		alien = new TextureRegion(AlienChase.MANAGER.get("alien.gif",
+		alien = new TextureRegion(AlienChase.MANAGER.get("entities/alien.gif",
 				Texture.class), 43, 29);
 		
 		// necesario definir tamaños para el actor y su hitbox.

@@ -69,22 +69,26 @@ public class AlienChase extends Game {
 		height = Gdx.graphics.getHeight();
 		camera = new OrthographicCamera(width, height);
 		
-		// Cargamos todos los elementos externos que usará el juego.
-		MANAGER.load("splash.png", Texture.class);
-		MANAGER.load("alien.gif", Texture.class);
-		MANAGER.load("bala.png", Texture.class);
-		MANAGER.load("cohete.png", Texture.class);
-		MANAGER.load("defensa.png", Texture.class);
-		MANAGER.load("pad.png", Texture.class);
-		MANAGER.load("vida.png", Texture.class);
-		MANAGER.load("hit.ogg", Sound.class);
-		MANAGER.load("explosion.ogg", Sound.class);
-		MANAGER.load("shoot.ogg", Sound.class);
-		MANAGER.load("gameover.png", Texture.class);
-		MANAGER.load("title.png", Texture.class);
-		MANAGER.load("jugar.png", Texture.class);
-		MANAGER.load("salir.png", Texture.class);
-		MANAGER.load("star.png", Texture.class);
+		// Load game assets.
+		// Splash screen has to be loaded first, so that the loader can
+		// display the splash image while the rest of the assets are loading.
+		MANAGER.load("ui/splash.png", Texture.class);
+		
+		MANAGER.load("entities/alien.gif", Texture.class);
+		MANAGER.load("entities/bala.png", Texture.class);
+		MANAGER.load("entities/cohete.png", Texture.class);
+		MANAGER.load("entities/star.png", Texture.class);
+		
+		MANAGER.load("sound/explosion.ogg", Sound.class);
+		MANAGER.load("sound/hit.ogg", Sound.class);
+		MANAGER.load("sound/shoot.ogg", Sound.class);
+		
+		MANAGER.load("ui/gameover.png", Texture.class);
+		MANAGER.load("ui/jugar.png", Texture.class);
+		MANAGER.load("ui/pad.png", Texture.class);
+		MANAGER.load("ui/salir.png", Texture.class);
+		MANAGER.load("ui/title.png", Texture.class);
+		MANAGER.load("ui/vida.png", Texture.class);
 		
 		setScreen(LOADING);
 	}

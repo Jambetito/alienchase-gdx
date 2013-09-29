@@ -41,7 +41,7 @@ public class BarraActor extends Actor {
 	 * @param entidad entidad que tiene vida a trackear.
 	 */
 	public BarraActor(HealthActor entidad) {
-		barra = AlienChase.MANAGER.get("vida.png", Texture.class);
+		barra = AlienChase.MANAGER.get("ui/vida.png", Texture.class);
 		setSize(barra.getWidth(), barra.getHeight());
 		this.entidad = entidad;
 	}

@@ -104,7 +104,7 @@ public class InputDesktopListener extends InputListener {
 		if(character != ' ')
 			return false;
 		screen.spawnBullet();
-		AlienChase.MANAGER.get("shoot.ogg", Sound.class).play();
+		AlienChase.MANAGER.get("sound/shoot.ogg", Sound.class).play();
 		return true;
 	}
 }

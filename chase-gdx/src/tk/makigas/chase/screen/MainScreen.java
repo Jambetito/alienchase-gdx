@@ -42,9 +42,9 @@ public class MainScreen extends AbstractScreen {
 
 	@Override
 	public void show() {
-		titulo = AlienChase.MANAGER.get("title.png", Texture.class);
-		btnJugar = AlienChase.MANAGER.get("jugar.png", Texture.class);
-		btnSalir = AlienChase.MANAGER.get("salir.png", Texture.class);
+		titulo = AlienChase.MANAGER.get("ui/title.png", Texture.class);
+		btnJugar = AlienChase.MANAGER.get("ui/jugar.png", Texture.class);
+		btnSalir = AlienChase.MANAGER.get("ui/salir.png", Texture.class);
 
 		stage = new Stage(640, 360, true, game.getSpriteBatch());
 		

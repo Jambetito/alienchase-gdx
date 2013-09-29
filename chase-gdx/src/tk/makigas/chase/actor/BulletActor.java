@@ -38,7 +38,7 @@ public class BulletActor extends Actor {
 	public Rectangle bb;
 
 	public BulletActor() {
-		bullet = new TextureRegion(AlienChase.MANAGER.get("bala.png",
+		bullet = new TextureRegion(AlienChase.MANAGER.get("entities/bala.png",
 				Texture.class), 16, 16);
 		setSize(bullet.getRegionWidth(), bullet.getRegionHeight());
 		bb = new Rectangle(getX(), getY(), getWidth(), getHeight());

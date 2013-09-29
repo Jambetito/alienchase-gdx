@@ -66,10 +66,10 @@ public class LoadingScreen extends AbstractScreen {
 		// Sólo se puede mostrar esta imagen si ya ha sido cargada por el
 		// AssetManager (de ahí que sea necesario cargar este recurso
 		// el primero de todos).
-		if(AlienChase.MANAGER.isLoaded("splash.png", Texture.class)) {
+		if(AlienChase.MANAGER.isLoaded("ui/splash.png", Texture.class)) {
 			// Está cargado.
 			game.getSpriteBatch().begin();
-			game.getSpriteBatch().draw(AlienChase.MANAGER.get("splash.png", Texture.class),
+			game.getSpriteBatch().draw(AlienChase.MANAGER.get("ui/splash.png", Texture.class),
 					x, y, size, size);
 			game.getSpriteBatch().end();
 		}

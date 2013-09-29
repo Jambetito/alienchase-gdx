@@ -226,7 +226,7 @@ public class GameplayScreen extends AbstractScreen {
 				// Cada impacto resta un 40% de vida al escudo.
 				if(escudo.getHealth() > 0.4f) {
 					escudo.sumHealth(-0.4f);
-					AlienChase.MANAGER.get("hit.ogg", Sound.class).play();
+					AlienChase.MANAGER.get("sound/hit.ogg", Sound.class).play();
 				} else {
 					// Si el escudo ya tenía menos de un 40% de vida,
 					// entonces el ataque a la tierra es inminente.
@@ -260,7 +260,7 @@ public class GameplayScreen extends AbstractScreen {
 				aliens.get(i).remove(); // eliminar del escenario
 				aliens.remove(i); // eliminar de la lista dinámica
 				nave.sumHealth(-0.4f);
-				AlienChase.MANAGER.get("hit.ogg", Sound.class).play();
+				AlienChase.MANAGER.get("sound/hit.ogg", Sound.class).play();
 				if(nave.getHealth() <= 0) {
 					// si no hay vida en la nave, entonces se acabó la partida
 					game.setScreen(game.GAMEOVER);
@@ -275,7 +275,7 @@ public class GameplayScreen extends AbstractScreen {
 						aliens.remove(i); // fuera de la lista dinámica
 						bullets.get(j).remove(); // fuera del escenario
 						bullets.remove(j); // fuera de la lista dinámica
-						AlienChase.MANAGER.get("explosion.ogg", Sound.class).play();
+						AlienChase.MANAGER.get("sound/explosion.ogg", Sound.class).play();
 						puntuacion.puntuacion++;
 					}
 				}

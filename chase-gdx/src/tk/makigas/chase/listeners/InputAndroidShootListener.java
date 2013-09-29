@@ -51,7 +51,7 @@ public class InputAndroidShootListener extends InputListener {
 	public boolean touchDown(InputEvent event, float x, float y,
 			int pointer, int button) {
 		screen.spawnBullet();		
-		AlienChase.MANAGER.get("shoot.ogg", Sound.class).play();
+		AlienChase.MANAGER.get("sound/shoot.ogg", Sound.class).play();
 		return true;
 	}
 }
