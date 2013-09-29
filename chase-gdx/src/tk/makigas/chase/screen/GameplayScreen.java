@@ -191,6 +191,7 @@ public class GameplayScreen extends AbstractScreen {
 	public void render(float delta) {
 		
 		// Limpieza de la pantalla.
+		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		Gdx.gl.glClear(GL11.GL_COLOR_BUFFER_BIT);
 		
 		// Actualizamos.
