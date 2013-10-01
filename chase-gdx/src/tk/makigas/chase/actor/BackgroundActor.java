@@ -101,7 +101,7 @@ public class BackgroundActor extends Actor {
 		stars = new ArrayList<StarData>();
 		
 		StarData star;
-		for(int i = 0; i < 50; i++) {
+		for(int i = 0; i < amount; i++) {
 			star = new StarData();
 			
 			// generate random information for the star.
