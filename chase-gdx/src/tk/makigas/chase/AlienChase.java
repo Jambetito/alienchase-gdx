@@ -26,10 +26,13 @@ import tk.makigas.chase.screen.MainScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.BitmapFontLoader.BitmapFontParameter;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont.BitmapFontData;
 
 /**
  * Juego de aliens.
@@ -83,11 +86,14 @@ public class AlienChase extends Game {
 		MANAGER.load("sound/hit.ogg", Sound.class);
 		MANAGER.load("sound/shoot.ogg", Sound.class);
 		
+		MANAGER.load("ui/fixed12.png", Texture.class);
+		MANAGER.load("ui/fixed12.fnt", BitmapFont.class);
 		MANAGER.load("ui/gameover.png", Texture.class);
 		MANAGER.load("ui/jugar.png", Texture.class);
 		MANAGER.load("ui/pad.png", Texture.class);
 		MANAGER.load("ui/salir.png", Texture.class);
 		MANAGER.load("ui/title.png", Texture.class);
+		MANAGER.load("ui/ui_button.png", Texture.class);
 		MANAGER.load("ui/vida.png", Texture.class);
 		
 		setScreen(LOADING);
