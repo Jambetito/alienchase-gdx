@@ -18,6 +18,7 @@
 package tk.makigas.chase.screen;
 
 import tk.makigas.chase.AlienChase;
+import tk.makigas.chase.actor.ui.Button;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -30,9 +31,9 @@ public class MainScreen extends AbstractScreen {
 
 	private Texture titulo;
 
-	private Texture btnJugar;
-
-	private Texture btnSalir;
+	private Button playButton, quitButton;
+	
+	private Image background;
 
 	private Stage stage;
 
@@ -43,18 +44,16 @@ public class MainScreen extends AbstractScreen {
 	@Override
 	public void show() {
 		titulo = AlienChase.MANAGER.get("ui/title.png", Texture.class);
-		btnJugar = AlienChase.MANAGER.get("ui/jugar.png", Texture.class);
-		btnSalir = AlienChase.MANAGER.get("ui/salir.png", Texture.class);
-
 		stage = new Stage(640, 360, true, game.getSpriteBatch());
 		
-		Image imgFondo = new Image(titulo);
-		imgFondo.setFillParent(true);
-		stage.addActor(imgFondo);
+		background = new Image(titulo);
+		background.setFillParent(true);
+		stage.addActor(background);
 		
-		Image imgJugar = new Image(btnJugar);
-		imgJugar.setBounds(10, 100, 300, 75);
-		imgJugar.addListener(new InputListener() {
+		playButton = new Button("Play game");
+		playButton.setSize(120, 16);
+		stage.addActor(playButton);
+		playButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -62,11 +61,11 @@ public class MainScreen extends AbstractScreen {
 				return true;
 			}
 		});
-		stage.addActor(imgJugar);
 		
-		Image imgSalir = new Image(btnSalir);
-		imgSalir.setBounds(330, 100, 300, 75);
-		imgSalir.addListener(new InputListener() {
+		quitButton = new Button("Quit game");
+		quitButton.setSize(120, 16);
+		stage.addActor(quitButton);
+		quitButton.addListener(new InputListener() {
 			@Override
 			public boolean touchDown(InputEvent event, float x, float y,
 					int pointer, int button) {
@@ -74,7 +73,7 @@ public class MainScreen extends AbstractScreen {
 				return true;
 			}
 		});
-		stage.addActor(imgSalir);
+
 		Gdx.input.setInputProcessor(stage);
 	}
 
@@ -93,7 +92,28 @@ public class MainScreen extends AbstractScreen {
 	public void dispose() {
 		
 	}
-
 	
+	/** UI scaling factor (has to be integer for not breaking pixels) */
+	private int uiScale;
+
+	@Override
+	public void resize(int width, int height) {
+		stage.setViewport(width, height, true);
+		if(width > height)
+			uiScale = height / 120 + 1;
+		else
+			uiScale = width / 160 + 1;
+		
+		playButton.setScale(uiScale);
+		quitButton.setScale(uiScale);
+		
+		// horizontal center
+		playButton.setX((width - playButton.getWidth() * uiScale) / 2);
+		quitButton.setX((width - quitButton.getWidth() * uiScale) / 2);
+		
+		// vertical positioning
+		playButton.setY(height / 2 - 10 * uiScale);
+		quitButton.setY(height / 2 - 30 * uiScale);
+	}
 
 }
