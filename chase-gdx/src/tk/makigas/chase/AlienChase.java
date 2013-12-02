@@ -30,8 +30,17 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
  */
 public class AlienChase extends Game {
 	
-	/** Gestor de recursos usado por el juego. */
-	public static final AssetManager MANAGER = new AssetManager();
+	/**
+	 * Gestor de recursos usado por el juego.
+	 * 
+	 * Realmente este campo debería llamarse manager y no MANAGER, pero
+	 * anteriormente fue una variable de tipo final y ahora me parece
+	 * demasiado arriesgado cambiar todas las referencias de MANAGER
+	 * por manager (especialmente teniendo en cuenta que este código
+	 * fuente está obsoleto y que seguramente la versión v1.1 de
+	 * Alien Chase cambiará por dentro el sistema de forma notable.
+	 */
+	public static AssetManager MANAGER;
 	
 	public SpriteBatch SB;
 		
@@ -46,6 +55,17 @@ public class AlienChase extends Game {
 
 	@Override
 	public void create() {
+		/*
+		 * Inicializa un nuevo AssetManager. Antes esto se hacía en la
+		 * propia definición del campo (de hecho la variable era final, lo
+		 * que explica que esté escrita aún en mayúsculas), pero eso
+		 * provocaba unos bugs muy feos.
+		 * 
+		 * Moraleja: inicializar cosas de LibGDX de forma estática y final
+		 * es una idea MUY mala.
+		 */
+		MANAGER = new AssetManager();
+		
 		SB = new SpriteBatch();
 		
 		// Cargamos todos los elementos externos que usará el juego.
