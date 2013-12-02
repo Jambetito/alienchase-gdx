@@ -123,7 +123,7 @@ public class GameplayScreen extends AbstractScreen {
 		
 			// Añadimos los listeners.
 			padArriba.addListener(new InputAndroidMoveListener(nave, 250f));
-			padAbajo.addListener(new InputAndroidMoveListener(nave, 250f));
+			padAbajo.addListener(new InputAndroidMoveListener(nave, -250f));
 			padShoot.addListener(new InputAndroidShootListener(stage, nave, bullets));
 		
 			// Los añadimos al escenario.
